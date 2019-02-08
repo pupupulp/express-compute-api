@@ -6,6 +6,10 @@ var express = require('express'),
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use(function(request, response) {
+	response.status(404).send({ message: 'Endpoint ' + request.originalUrl + ' not found' })
+});
+
 var arithmeticEndpoint = require('./api/endpoints/arithmetic-endpoint');
 arithmeticEndpoint(app);
 
