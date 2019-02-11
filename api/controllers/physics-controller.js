@@ -142,3 +142,71 @@ exports.kineticEnergy = (request, response) => {
 	saveComputation(response, mapToObject(request, operands, result));
 };
 
+exports.power = (request, response) => {
+	let operands = request.body,
+		result = formulas.power(operands);
+
+	saveComputation(response, mapToObject(request, operands, result));
+};
+
+exports.friction = (request, response) => {
+	let operands = request.body,
+		result = formulas.friction(operands);
+
+	saveComputation(response, mapToObject(request, operands, result));
+};
+
+exports.horizontalForce = (request, response) => {
+	let operands = request.body,
+		result = formulas.horizontalForce(operands);
+
+	saveComputation(response, mapToObject(request, operands, result));
+};
+
+exports.momentInertia = (request, response) => {
+	let operands = request.body,
+		result = formulas.momentInertia(operands);
+
+	saveComputation(response, mapToObject(request, operands, result));
+};
+
+exports.gravity = (request, response) => {
+	let operands = request.body,
+		result = formulas.gravity(operands);
+
+	saveComputation(response, mapToObject(request, operands, result));
+};
+
+exports.projectileHeight = (request, response) => {
+	let operands = request.body,
+		result = formulas.projectileHeight(operands);
+
+	saveComputation(response, mapToObject(request, operands, result));
+};
+
+exports.projectileRange = (request, response) => {
+	let operands = request.body,
+		result = formulas.projectileRange(operands);
+
+	saveComputation(response, mapToObject(request, operands, result));
+};
+
+exports.simplePendulum = (request, response) => {
+	let operands = request.body,
+		result = formulas.simplePendulum(operands);
+
+	saveComputation(response, mapToObject(request, operands, result));
+};
+
+exports.conicalPendulum = (request, response) => {
+	let operands = request.body,
+		result = formulas.conicalPendulum(operands);
+
+	saveComputation(response, mapToObject(request, operands, result));
+};
+
+
+
+
+
+
