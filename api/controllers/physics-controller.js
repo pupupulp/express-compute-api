@@ -29,6 +29,14 @@ exports.index = (request, response) => {
 	})
 };
 
+exports.listComputations = (request, response) => {
+	Computation
+		.find({ endpoint: request.path }, (error, computations) => {
+			if(error) response.send(error);
+			response.json(computations);
+		})
+};
+
 exports.kinematicalMotion = (request, response) => {
 	let operands = request.body,
 		result = formulas.kinematicalMotion(operands);
