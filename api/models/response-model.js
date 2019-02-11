@@ -4,18 +4,24 @@ var mongoose = require('mongoose'),
 var ComputationSchema = new Schema({
 	requested_by: { 
 		type: String 
-	}
+	},
 	endpoint: { 
 		type: String 
 	},
-	properties: {
+	operands: {
 		type: Object
 	},
 	message: {
 		type: String
 	},
 	result: {
-		type: Double
+		type: Number,
+		get: (value) => {
+			return (value / 100).toFixed(2);
+		},
+		set: (value) => {
+			return value * 100;
+		}
 	},
 	request_date: {
 		type: Date,
