@@ -10,4 +10,13 @@ module.exports = (app) => {
 
 	app.route(BASE_URL + '/subtract')
 		.post(arithmeticController.subtract);
+
+	app.route(BASE_URL + '/multiply')
+		.post(arithmeticController.multiply);
+
+	app.route(BASE_URL + '/divide')
+		.post(arithmeticController.divide);
+
+	app.route(BASE_URL + '/mod')
+		.post(arithmeticController.mod);
 }
