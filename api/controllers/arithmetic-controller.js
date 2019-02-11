@@ -57,3 +57,63 @@ exports.subtract = (request, response) => {
 
 	response.json(result);
 };
+
+exports.multiply = (request, response) => {
+	let body = request.body,
+		a = body.a,
+		b = body.b,
+		computed = a * b;
+
+	const result = {
+		message: 'success',
+		endpoint: request.path,
+		operands: {
+			a: a,
+			b: b
+		},
+		result: computed,
+		requested_by: request.ip
+	};
+
+	response.json(result);
+};
+
+exports.divide = (request, response) => {
+	let body = request.body,
+		a = body.a,
+		b = body.b,
+		computed = a / b;
+
+	const result = {
+		message: 'success',
+		endpoint: request.path,
+		operands: {
+			a: a,
+			b: b
+		},
+		result: computed,
+		requested_by: request.ip
+	};
+
+	response.json(result);
+};
+
+exports.mod = (request, response) => {
+	let body = request.body,
+		a = body.a,
+		b = body.b,
+		computed = a % b;
+
+	const result = {
+		message: 'success',
+		endpoint: request.path,
+		operands: {
+			a: a,
+			b: b
+		},
+		result: computed,
+		requested_by: request.ip
+	};
+
+	response.json(result);
+};
