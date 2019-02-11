@@ -3,7 +3,7 @@ var express = require('express'),
 	port = process.env.PORT || 3000,
 	mongoose = require('mongoose'),
 	bodyParser = require('body-parser'),
-	Computation = require('./api/models/response-model'),
+	Computation = require('./api/models/computation-model'),
 	apiController = require('./api/controllers/api-controller'),
 	errorController = require('./api/controllers/error-controller');
 
