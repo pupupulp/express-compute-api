@@ -2,7 +2,7 @@ var mongoose = require('mongoose'),
 	Computation = mongoose.model('Computations'),
 	formulas = require('../formulas/arithmetic-formulas');
 
-const saveComputation = (result, response) => {
+const saveComputation = (response, result) => {
 	let newComputation = new Computation(result)
 
 	newComputation
@@ -12,7 +12,7 @@ const saveComputation = (result, response) => {
 		});
 };
 
-const mapResponse = (request, operands, result) => {
+const mapToObject = (request, operands, result) => {
 	return {
 		message: 'success',
 		endpoint: request.path,
@@ -41,33 +41,33 @@ exports.add = (request, response) => {
 	let operands = request.body,
 		result = formulas.add(operands);
 
-	saveComputation(mapResponse(request, operands, result), response);
+	saveComputation(response, mapToObject(request, operands, result));
 };
 
 exports.subtract = (request, response) => {
 	let operands = request.body,
 		result = formulas.subtract(operands);
 
-	saveComputation(mapResponse(request, operands, result), response);
+	saveComputation(response, mapToObject(request, operands, result));
 };
 
 exports.multiply = (request, response) => {
 	let operands = request.body,
 		result = formulas.multiply(operands);
 
-	saveComputation(mapResponse(request, operands, result), response);
+	saveComputation(response, mapToObject(request, operands, result));
 };
 
 exports.divide = (request, response) => {
 	let operands = request.body,
 		result = formulas.divide(operands);
 
-	saveComputation(mapResponse(request, operands, result), response);
+	saveComputation(response, mapToObject(request, operands, result));
 };
 
 exports.mod = (request, response) => {
 	let operands = request.body,
 		result = formulas.mod(operands);
 
-	saveComputation(mapResponse(request, operands, result), response);
+	saveComputation(response, mapToObject(request, operands, result));
 };

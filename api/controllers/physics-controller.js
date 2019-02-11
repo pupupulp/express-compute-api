@@ -2,7 +2,7 @@ var mongoose = require('mongoose'),
 	Computation = mongoose.model('Computations'),
 	formulas = require('../formulas/physics-formulas');
 
-const saveComputation = (result, response) => {
+const saveComputation = (response, result) => {
 	let newComputation = new Computation(result)
 
 	newComputation
@@ -12,7 +12,7 @@ const saveComputation = (result, response) => {
 		});
 };
 
-const mapResponse = (request, operands, result) => {
+const mapToObject = (request, operands, result) => {
 	return {
 		message: 'success',
 		endpoint: request.path,
@@ -41,104 +41,104 @@ exports.kinematicalMotion = (request, response) => {
 	let operands = request.body,
 		result = formulas.kinematicalMotion(operands);
 
-	saveComputation(mapResponse(request, operands, result), response);
+	saveComputation(response, mapToObject(request, operands, result));
 };
 
 exports.momentum = (request, response) => {
 	let operands = request.body,
 		result = formulas.momentum(operands);
 
-	saveComputation(mapResponse(request, operands, result), response);
+	saveComputation(response, mapToObject(request, operands, result));
 };
 
 exports.force = (request, response) => {
 	let operands = request.body,
 		result = formulas.force(operands);
 
-	saveComputation(mapResponse(request, operands, result), response);
+	saveComputation(response, mapToObject(request, operands, result));
 };
 
 exports.impulse = (request, response) => {
 	let operands = request.body,
 		result = formulas.impulse(operands);
 
-	saveComputation(mapResponse(request, operands, result), response);
+	saveComputation(response, mapToObject(request, operands, result));
 };
 
 exports.pressure = (request, response) => {
 	let operands = request.body,
 		result = formulas.pressure(operands);
 
-	saveComputation(mapResponse(request, operands, result), response);
+	saveComputation(response, mapToObject(request, operands, result));
 };
 
 exports.density = (request, response) => {
 	let operands = request.body,
 		result = formulas.density(operands);
 
-	saveComputation(mapResponse(request, operands, result), response);
+	saveComputation(response, mapToObject(request, operands, result));
 };
 
 exports.angularMomentum = (request, response) => {
 	let operands = request.body,
 		result = formulas.angularMomentum(operands);
 
-	saveComputation(mapResponse(request, operands, result), response);
+	saveComputation(response, mapToObject(request, operands, result));
 };
 
 exports.torque = (request, response) => {
 	let operands = request.body,
 		result = formulas.torque(operands);
 
-	saveComputation(mapResponse(request, operands, result), response);
+	saveComputation(response, mapToObject(request, operands, result));
 };
 
 exports.centripetalForce = (request, response) => {
 	let operands = request.body,
 		result = formulas.centripetalForce(operands);
 
-	saveComputation(mapResponse(request, operands, result), response);
+	saveComputation(response, mapToObject(request, operands, result));
 };
 
 exports.centripetalAcceleration = (request, response) => {
 	let operands = request.body,
 		result = formulas.centripetalAcceleration(operands);
 
-	saveComputation(mapResponse(request, operands, result), response);
+	saveComputation(response, mapToObject(request, operands, result));
 };
 
 exports.centerMass = (request, response) => {
 	let operands = request.body,
 		result = formulas.centerMass(operands);
 
-	saveComputation(mapResponse(request, operands, result), response);
+	saveComputation(response, mapToObject(request, operands, result));
 };
 
 exports.reducedMass = (request, response) => {
 	let operands = request.body,
 		result = formulas.reducedMass(operands);
 
-	saveComputation(mapResponse(request, operands, result), response);
+	saveComputation(response, mapToObject(request, operands, result));
 };
 
 exports.work = (request, response) => {
 	let operands = request.body,
 		result = formulas.work(operands);
 
-	saveComputation(mapResponse(request, operands, result), response);
+	saveComputation(response, mapToObject(request, operands, result));
 };
 
 exports.potentialEnergy = (request, response) => {
 	let operands = request.body,
 		result = formulas.potentialEnergy(operands);
 
-	saveComputation(mapResponse(request, operands, result), response);
+	saveComputation(response, mapToObject(request, operands, result));
 };
 
 exports.kineticEnergy = (request, response) => {
 	let operands = request.body,
 		result = formulas.kineticEnergy(operands);
 
-	saveComputation(mapResponse(request, operands, result), response);
+	saveComputation(response, mapToObject(request, operands, result));
 };
 
