@@ -15,13 +15,7 @@ var ComputationSchema = new Schema({
 		type: String
 	},
 	result: {
-		type: Number,
-		get: (value) => {
-			return (value / 100).toFixed(2);
-		},
-		set: (value) => {
-			return value * 100;
-		}
+		type: Number
 	},
 	request_date: {
 		type: Date,
