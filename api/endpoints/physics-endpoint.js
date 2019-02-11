@@ -64,4 +64,40 @@ module.exports = (app) => {
 	app.route(BASE_URL + '/kinetic-energy')
 		.get(controller.listComputations)
 		.post(controller.kineticEnergy);
+
+	app.route(BASE_URL + '/power')
+		.get(controller.listComputations)
+		.post(controller.power);
+
+	app.route(BASE_URL + '/friction')
+		.get(controller.listComputations)
+		.post(controller.friction);
+
+	app.route(BASE_URL + '/horizontal-force')
+		.get(controller.listComputations)
+		.post(controller.horizontalForce);
+
+	app.route(BASE_URL + '/moment-inertia')
+		.get(controller.listComputations)
+		.post(controller.momentInertia);
+
+	app.route(BASE_URL + '/gravity')
+		.get(controller.listComputations)
+		.post(controller.gravity);
+
+	app.route(BASE_URL + '/projectile-height')
+		.get(controller.listComputations)
+		.post(controller.projectileHeight);
+
+	app.route(BASE_URL + '/projectile-range')
+		.get(controller.listComputations)
+		.post(controller.projectileRange);
+
+	app.route(BASE_URL + '/simple-pendulum')
+		.get(controller.listComputations)
+		.post(controller.simplePendulum);
+
+	app.route(BASE_URL + '/conical-pendulum')
+		.get(controller.listComputations)
+		.post(controller.conicalPendulum);
 }
