@@ -25,14 +25,14 @@ exports.add = (request, response) => {
 		computed = a + b;
 
 	const result = {
-		requested_by: request.ip,
-		endpoint: request.route.path,
+		message: 'success',
+		endpoint: request.path,
 		operands: {
 			a: a,
 			b: b
 		},
-		message: 'success',
-		result: computed
+		result: computed,
+		requested_by: request.ip
 	};
 
 	response.json(result);
@@ -42,10 +42,18 @@ exports.subtract = (request, response) => {
 	let body = request.body,
 		a = body.a,
 		b = body.b,
-		result = a - b;
+		computed = a - b;
 
-	response.json({
-		code: 'success',
-		result: result
-	});
+	const result = {
+		message: 'success',
+		endpoint: request.path,
+		operands: {
+			a: a,
+			b: b
+		},
+		result: computed,
+		requested_by: request.ip
+	};
+
+	response.json(result);
 };
