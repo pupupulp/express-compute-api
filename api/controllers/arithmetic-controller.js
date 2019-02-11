@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
-	Computation = mongoose.model('Computations');
+	Computation = mongoose.model('Computations'),
+	arithmeticFormulas = require('../formulas/arithmetic-formulas');
 
 var saveComputation = (result) => {
 	let newComputation = new Computation(result)
@@ -19,18 +20,13 @@ exports.index = (request, response) => {
 };
 
 exports.add = (request, response) => {
-	let body = request.body,
-		a = body.a,
-		b = body.b,
-		computed = a + b;
+	let operands = request.body,
+		computed = arithmeticFormulas.add(operands);
 
 	const result = {
 		message: 'success',
 		endpoint: request.path,
-		operands: {
-			a: a,
-			b: b
-		},
+		operands: operands,
 		result: computed,
 		requested_by: request.ip
 	};
@@ -39,18 +35,13 @@ exports.add = (request, response) => {
 };
 
 exports.subtract = (request, response) => {
-	let body = request.body,
-		a = body.a,
-		b = body.b,
-		computed = a - b;
+	let operands = request.body,
+		computed = arithmeticFormulas.subtract(operands);
 
 	const result = {
 		message: 'success',
 		endpoint: request.path,
-		operands: {
-			a: a,
-			b: b
-		},
+		operands: operands,
 		result: computed,
 		requested_by: request.ip
 	};
@@ -59,18 +50,13 @@ exports.subtract = (request, response) => {
 };
 
 exports.multiply = (request, response) => {
-	let body = request.body,
-		a = body.a,
-		b = body.b,
-		computed = a * b;
+	let operands = request.body,
+		computed = arithmeticFormulas.multiply(operands);
 
 	const result = {
 		message: 'success',
 		endpoint: request.path,
-		operands: {
-			a: a,
-			b: b
-		},
+		operands: operands,
 		result: computed,
 		requested_by: request.ip
 	};
@@ -79,18 +65,13 @@ exports.multiply = (request, response) => {
 };
 
 exports.divide = (request, response) => {
-	let body = request.body,
-		a = body.a,
-		b = body.b,
-		computed = a / b;
+	let operands = request.body,
+		computed = arithmeticFormulas.divide(operands);
 
 	const result = {
 		message: 'success',
 		endpoint: request.path,
-		operands: {
-			a: a,
-			b: b
-		},
+		operands: operands,
 		result: computed,
 		requested_by: request.ip
 	};
@@ -99,18 +80,13 @@ exports.divide = (request, response) => {
 };
 
 exports.mod = (request, response) => {
-	let body = request.body,
-		a = body.a,
-		b = body.b,
-		computed = a % b;
+	let operands = request.body,
+		computed = arithmeticFormulas.mod(operands);
 
 	const result = {
 		message: 'success',
 		endpoint: request.path,
-		operands: {
-			a: a,
-			b: b
-		},
+		operands: operands,
 		result: computed,
 		requested_by: request.ip
 	};
