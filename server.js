@@ -1,17 +1,15 @@
 var express = require('express'),
 	app = express(),
 	port = process.env.PORT || 3000
-	bodyParser = require('body-parser');
+	bodyParser = require('body-parser'),
+	apiController = require('./api/controllers/api-controller'),
+	errorController = require('./api/controllers/error-controller');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(function(request, response) {
-	response.status(404).send({ message: 'Endpoint ' + request.originalUrl + ' not found' })
-});
-
-var arithmeticEndpoint = require('./api/endpoints/arithmetic-endpoint');
-arithmeticEndpoint(app);
+apiController(app); 
+errorController(app);
 
 app.listen(port);
 
