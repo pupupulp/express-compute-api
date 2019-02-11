@@ -70,3 +70,57 @@ exports.potentialEnergy = (operands) => {
 exports.kineticEnergy = (operands) => {
 	return (operands.m * (1 / 2)) * (operands.v ^ 2);
 };
+
+exports.power = (operands) => {
+	if(operands.hasOwnProperty('i')) {
+		return (operands.i ^ 2) * operands.r
+	}
+
+	return operands.v * operands.r;
+};
+
+exports.friction = (operands) => {
+	return operands.f / operands.n;
+};
+
+exports.horizontalForce = (operands) => {
+	return operands.u * operands.m * operands.g;
+};
+
+exports.momentInertia = (operands) => {
+	switch(operands.type) {
+		case 'disk':
+			return (operands.m * (operands.r ^ 2)) / 2;
+		case 'thin-rod':
+			return (operands.m * (operands.l ^ 2)) / 12;
+		case 'solid-sphere':
+			return (2 * operands.m * (operands.r ^ 2)) / 5;
+		case 'solid-shell':
+			return (2 * operands.m * (operands.r ^ 2)) / 3;
+	}
+};
+
+exports.gravity = (operands) => {
+	const GRAVITATIONAL_CONSTANT = 6.67191 * 10 ^ (-11);
+	return (GRAVITATIONAL_CONSTANT * operands.m * operands.m2) / (operands.r ^ 2);
+};
+
+exports.projectileHeight = (operands) => {
+	return ((operands.v ^ 2) * (Math.sin(operands.d) ^ 2)) / (2 * operands.g);
+};
+
+exports.projectileRange = (operands) => {
+	return ((operands.v ^ 2) * Math.sin(operands.d * 2)) / operands.g;
+};
+
+exports.simplePendulum = (operands) => {
+	const PIE = 3.14;
+	return (2 * PIE) * Math.sqrt(operands.l / operands.g);
+};
+
+exports.conicalPendulum = (operands) => {
+	const PIE = 3.14;
+	return (2 * PIE) * Math.sqrt((operands.l * Math.cos(operands.d)) / operands.g);
+};
+
+
