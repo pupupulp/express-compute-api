@@ -1,6 +1,6 @@
 var mongoose = require('mongoose'),
 	Computation = mongoose.model('Computations'),
-	arithmeticFormulas = require('../formulas/arithmetic-formulas');
+	formulas = require('../formulas/arithmetic-formulas');
 
 var saveComputation = (result) => {
 	let newComputation = new Computation(result)
@@ -21,7 +21,7 @@ exports.index = (request, response) => {
 
 exports.add = (request, response) => {
 	let operands = request.body,
-		computed = arithmeticFormulas.add(operands);
+		computed = formulas.add(operands);
 
 	const result = {
 		message: 'success',
@@ -36,7 +36,7 @@ exports.add = (request, response) => {
 
 exports.subtract = (request, response) => {
 	let operands = request.body,
-		computed = arithmeticFormulas.subtract(operands);
+		computed = formulas.subtract(operands);
 
 	const result = {
 		message: 'success',
@@ -51,7 +51,7 @@ exports.subtract = (request, response) => {
 
 exports.multiply = (request, response) => {
 	let operands = request.body,
-		computed = arithmeticFormulas.multiply(operands);
+		computed = formulas.multiply(operands);
 
 	const result = {
 		message: 'success',
@@ -66,7 +66,7 @@ exports.multiply = (request, response) => {
 
 exports.divide = (request, response) => {
 	let operands = request.body,
-		computed = arithmeticFormulas.divide(operands);
+		computed = formulas.divide(operands);
 
 	const result = {
 		message: 'success',
@@ -81,7 +81,7 @@ exports.divide = (request, response) => {
 
 exports.mod = (request, response) => {
 	let operands = request.body,
-		computed = arithmeticFormulas.mod(operands);
+		computed = formulas.mod(operands);
 
 	const result = {
 		message: 'success',
