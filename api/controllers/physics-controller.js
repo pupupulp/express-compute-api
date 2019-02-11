@@ -163,9 +163,30 @@ exports.horizontalForce = (request, response) => {
 	saveComputation(response, mapToObject(request, operands, result));
 };
 
-exports.momentInertia = (request, response) => {
+exports.momentInertiaDisk = (request, response) => {
 	let operands = request.body,
-		result = formulas.momentInertia(operands);
+		result = formulas.momentInertiaDisk(operands);
+
+	saveComputation(response, mapToObject(request, operands, result));
+};
+
+exports.momentInertiaThinRod = (request, response) => {
+	let operands = request.body,
+		result = formulas.momentInertiaThinRod(operands);
+
+	saveComputation(response, mapToObject(request, operands, result));
+};
+
+exports.momentInertiaSolidSphere = (request, response) => {
+	let operands = request.body,
+		result = formulas.momentInertiaSolidSphere(operands);
+
+	saveComputation(response, mapToObject(request, operands, result));
+};
+
+exports.momentInertiaSolidShell = (request, response) => {
+	let operands = request.body,
+		result = formulas.momentInertiaSolidShell(operands);
 
 	saveComputation(response, mapToObject(request, operands, result));
 };
@@ -201,6 +222,13 @@ exports.simplePendulum = (request, response) => {
 exports.conicalPendulum = (request, response) => {
 	let operands = request.body,
 		result = formulas.conicalPendulum(operands);
+
+	saveComputation(response, mapToObject(request, operands, result));
+};
+
+exports.voltage = (request, response) => {
+	let operands = request.body,
+		result = formulas.voltage(operands);
 
 	saveComputation(response, mapToObject(request, operands, result));
 };

@@ -87,17 +87,20 @@ exports.horizontalForce = (operands) => {
 	return operands.u * operands.m * operands.g;
 };
 
-exports.momentInertia = (operands) => {
-	switch(operands.type) {
-		case 'disk':
-			return (operands.m * (operands.r ^ 2)) / 2;
-		case 'thin-rod':
-			return (operands.m * (operands.l ^ 2)) / 12;
-		case 'solid-sphere':
-			return (2 * operands.m * (operands.r ^ 2)) / 5;
-		case 'solid-shell':
-			return (2 * operands.m * (operands.r ^ 2)) / 3;
-	}
+exports.momentInertiaDisk = (operands) => {
+	return (operands.m * (operands.r ^ 2)) / 2;
+};
+
+exports.momentInertiaThinRod = (operands) => {
+	return (operands.m * (operands.l ^ 2)) / 12;
+};
+
+exports.momentInertiaSolidSphere = (operands) => {
+	return (2 * operands.m * (operands.r ^ 2)) / 5;
+};
+
+exports.momentInertiaSolidShell = (operands) => {
+	return (2 * operands.m * (operands.r ^ 2)) / 3;
 };
 
 exports.gravity = (operands) => {
@@ -121,6 +124,10 @@ exports.simplePendulum = (operands) => {
 exports.conicalPendulum = (operands) => {
 	const PIE = 3.14;
 	return (2 * PIE) * Math.sqrt((operands.l * Math.cos(operands.d)) / operands.g);
+};
+
+exports.voltage = (operands) => {
+	return operands.i * operands.r;
 };
 
 

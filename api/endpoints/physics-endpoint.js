@@ -77,9 +77,21 @@ module.exports = (app) => {
 		.get(controller.listComputations)
 		.post(controller.horizontalForce);
 
-	app.route(BASE_URL + '/moment-inertia')
+	app.route(BASE_URL + '/moment-inertia-disk')
 		.get(controller.listComputations)
-		.post(controller.momentInertia);
+		.post(controller.momentInertiaDisk);
+
+	app.route(BASE_URL + '/moment-inertia-thin-rod')
+		.get(controller.listComputations)
+		.post(controller.momentInertiaThinRod);
+
+	app.route(BASE_URL + '/momentI-inertia-solid-sphere')
+		.get(controller.listComputations)
+		.post(controller.momentInertiaSolidSphere);
+
+	app.route(BASE_URL + '/moment-inertia-solid-shell')
+		.get(controller.listComputations)
+		.post(controller.momentInertiaSolidShell);
 
 	app.route(BASE_URL + '/gravity')
 		.get(controller.listComputations)
@@ -100,4 +112,8 @@ module.exports = (app) => {
 	app.route(BASE_URL + '/conical-pendulum')
 		.get(controller.listComputations)
 		.post(controller.conicalPendulum);
+
+	app.route(BASE_URL + '/voltage')
+		.get(controller.listComputations)
+		.post(controller.voltage);
 }
