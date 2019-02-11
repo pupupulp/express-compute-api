@@ -2,7 +2,7 @@ var mongoose = require('mongoose'),
 	Computation = mongoose.model('Computations'),
 	formulas = require('../formulas/arithmetic-formulas');
 
-var saveComputation = (result) => {
+const saveComputation = (result) => {
 	let newComputation = new Computation(result)
 
 	newComputation
@@ -11,6 +11,16 @@ var saveComputation = (result) => {
 			response.json(computation);
 		});
 };
+
+const mapResponse = (request, operands, result) => {
+	return {
+		message: 'success',
+		endpoint: request.path,
+		operands: operands,
+		result: result,
+		requested_by: request.ip
+	};
+}
 
 exports.index = (request, response) => {
 	response.json({
@@ -21,75 +31,35 @@ exports.index = (request, response) => {
 
 exports.add = (request, response) => {
 	let operands = request.body,
-		computed = formulas.add(operands);
+		result = formulas.add(operands);
 
-	const result = {
-		message: 'success',
-		endpoint: request.path,
-		operands: operands,
-		result: computed,
-		requested_by: request.ip
-	};
-
-	response.json(result);
+	response.json(mapResponse(request, operands, result));
 };
 
 exports.subtract = (request, response) => {
 	let operands = request.body,
-		computed = formulas.subtract(operands);
+		result = formulas.subtract(operands);
 
-	const result = {
-		message: 'success',
-		endpoint: request.path,
-		operands: operands,
-		result: computed,
-		requested_by: request.ip
-	};
-
-	response.json(result);
+	response.json(mapResponse(request, operands, result));
 };
 
 exports.multiply = (request, response) => {
 	let operands = request.body,
-		computed = formulas.multiply(operands);
+		result = formulas.multiply(operands);
 
-	const result = {
-		message: 'success',
-		endpoint: request.path,
-		operands: operands,
-		result: computed,
-		requested_by: request.ip
-	};
-
-	response.json(result);
+	response.json(mapResponse(request, operands, result));
 };
 
 exports.divide = (request, response) => {
 	let operands = request.body,
-		computed = formulas.divide(operands);
+		result = formulas.divide(operands);
 
-	const result = {
-		message: 'success',
-		endpoint: request.path,
-		operands: operands,
-		result: computed,
-		requested_by: request.ip
-	};
-
-	response.json(result);
+	response.json(mapResponse(request, operands, result));
 };
 
 exports.mod = (request, response) => {
 	let operands = request.body,
-		computed = formulas.mod(operands);
+		result = formulas.mod(operands);
 
-	const result = {
-		message: 'success',
-		endpoint: request.path,
-		operands: operands,
-		result: computed,
-		requested_by: request.ip
-	};
-
-	response.json(result);
+	response.json(mapResponse(request, operands, result));
 };

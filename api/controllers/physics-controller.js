@@ -2,7 +2,7 @@ var mongoose = require('mongoose'),
 	Computation = mongoose.model('Computations'),
 	formulas = require('../formulas/physics-formulas');
 
-var saveComputation = (result) => {
+const saveComputation = (result) => {
 	let newComputation = new Computation(result)
 
 	newComputation
@@ -11,6 +11,16 @@ var saveComputation = (result) => {
 			response.json(computation);
 		});
 };
+
+const mapResponse = (request, operands, result) => {
+	return {
+		message: 'success',
+		endpoint: request.path,
+		operands: operands,
+		result: result,
+		requested_by: request.ip
+	};
+}
 
 exports.index = (request, response) => {
 	response.json({
@@ -21,226 +31,106 @@ exports.index = (request, response) => {
 
 exports.kinematicalMotion = (request, response) => {
 	let operands = request.body,
-		computed = formulas.kinematicalMotion(operands);
+		result = formulas.kinematicalMotion(operands);
 
-	const result = {
-		message: 'success',
-		endpoint: request.path,
-		operands: operands,
-		result: computed,
-		requested_by: request.ip
-	};
-
-	response.json(result);
+	response.json(mapResponse(request, operands, result));
 };
 
 exports.momentum = (request, response) => {
 	let operands = request.body,
-		computed = formulas.momentum(operands);
+		result = formulas.momentum(operands);
 
-	const result = {
-		message: 'success',
-		endpoint: request.path,
-		operands: operands,
-		result: computed,
-		requested_by: request.ip
-	};
-
-	response.json(result);
+	response.json(mapResponse(request, operands, result));
 };
 
 exports.force = (request, response) => {
 	let operands = request.body,
-		computed = formulas.force(operands);
+		result = formulas.force(operands);
 
-	const result = {
-		message: 'success',
-		endpoint: request.path,
-		operands: operands,
-		result: computed,
-		requested_by: request.ip
-	};
-
-	response.json(result);
+	response.json(mapResponse(request, operands, result));
 };
 
 exports.impulse = (request, response) => {
 	let operands = request.body,
-		computed = formulas.impulse(operands);
+		result = formulas.impulse(operands);
 
-	const result = {
-		message: 'success',
-		endpoint: request.path,
-		operands: operands,
-		result: computed,
-		requested_by: request.ip
-	};
-
-	response.json(result);
+	response.json(mapResponse(request, operands, result));
 };
 
 exports.pressure = (request, response) => {
 	let operands = request.body,
-		computed = formulas.pressure(operands);
+		result = formulas.pressure(operands);
 
-	const result = {
-		message: 'success',
-		endpoint: request.path,
-		operands: operands,
-		result: computed,
-		requested_by: request.ip
-	};
-
-	response.json(result);
+	response.json(mapResponse(request, operands, result));
 };
 
 exports.density = (request, response) => {
 	let operands = request.body,
-		computed = formulas.density(operands);
+		result = formulas.density(operands);
 
-	const result = {
-		message: 'success',
-		endpoint: request.path,
-		operands: operands,
-		result: computed,
-		requested_by: request.ip
-	};
-
-	response.json(result);
+	response.json(mapResponse(request, operands, result));
 };
 
 exports.angularMomentum = (request, response) => {
 	let operands = request.body,
-		computed = formulas.angularMomentum(operands);
+		result = formulas.angularMomentum(operands);
 
-	const result = {
-		message: 'success',
-		endpoint: request.path,
-		operands: operands,
-		result: computed,
-		requested_by: request.ip
-	};
-
-	response.json(result);
+	response.json(mapResponse(request, operands, result));
 };
 
 exports.torque = (request, response) => {
 	let operands = request.body,
-		computed = formulas.torque(operands);
+		result = formulas.torque(operands);
 
-	const result = {
-		message: 'success',
-		endpoint: request.path,
-		operands: operands,
-		result: computed,
-		requested_by: request.ip
-	};
-
-	response.json(result);
+	response.json(mapResponse(request, operands, result));
 };
 
 exports.centripetalForce = (request, response) => {
 	let operands = request.body,
-		computed = formulas.centripetalForce(operands);
+		result = formulas.centripetalForce(operands);
 
-	const result = {
-		message: 'success',
-		endpoint: request.path,
-		operands: operands,
-		result: computed,
-		requested_by: request.ip
-	};
-
-	response.json(result);
+	response.json(mapResponse(request, operands, result));
 };
 
 exports.centripetalAcceleration = (request, response) => {
 	let operands = request.body,
-		computed = formulas.centripetalAcceleration(operands);
+		result = formulas.centripetalAcceleration(operands);
 
-	const result = {
-		message: 'success',
-		endpoint: request.path,
-		operands: operands,
-		result: computed,
-		requested_by: request.ip
-	};
-
-	response.json(result);
+	response.json(mapResponse(request, operands, result));
 };
 
 exports.centerMass = (request, response) => {
 	let operands = request.body,
-		computed = formulas.centerMass(operands);
+		result = formulas.centerMass(operands);
 
-	const result = {
-		message: 'success',
-		endpoint: request.path,
-		operands: operands,
-		result: computed,
-		requested_by: request.ip
-	};
-
-	response.json(result);
+	response.json(mapResponse(request, operands, result));
 };
 
 exports.reducedMass = (request, response) => {
 	let operands = request.body,
-		computed = formulas.reducedMass(operands);
+		result = formulas.reducedMass(operands);
 
-	const result = {
-		message: 'success',
-		endpoint: request.path,
-		operands: operands,
-		result: computed,
-		requested_by: request.ip
-	};
-
-	response.json(result);
+	response.json(mapResponse(request, operands, result));
 };
 
 exports.work = (request, response) => {
 	let operands = request.body,
-		computed = formulas.work(operands);
+		result = formulas.work(operands);
 
-	const result = {
-		message: 'success',
-		endpoint: request.path,
-		operands: operands,
-		result: computed,
-		requested_by: request.ip
-	};
-
-	response.json(result);
+	response.json(mapResponse(request, operands, result));
 };
 
 exports.potentialEnergy = (request, response) => {
 	let operands = request.body,
-		computed = formulas.potentialEnergy(operands);
+		result = formulas.potentialEnergy(operands);
 
-	const result = {
-		message: 'success',
-		endpoint: request.path,
-		operands: operands,
-		result: computed,
-		requested_by: request.ip
-	};
-
-	response.json(result);
+	response.json(mapResponse(request, operands, result));
 };
 
 exports.kineticEnergy = (request, response) => {
 	let operands = request.body,
-		computed = formulas.kineticEnergy(operands);
+		result = formulas.kineticEnergy(operands);
 
-	const result = {
-		message: 'success',
-		endpoint: request.path,
-		operands: operands,
-		result: computed,
-		requested_by: request.ip
-	};
-
-	response.json(result);
+	response.json(mapResponse(request, operands, result));
 };
 
