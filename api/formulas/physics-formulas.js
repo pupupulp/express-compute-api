@@ -76,7 +76,7 @@ exports.power = (operands) => {
 		return (operands.i ^ 2) * operands.r
 	}
 
-	return operands.v * operands.r;
+	return (operands.v ^ 2) * operands.r;
 };
 
 exports.friction = (operands) => {
